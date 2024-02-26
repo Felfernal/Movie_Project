@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+
+{% endblock %}
+{% block title %}
+    MVS
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="text-align: center;">
+            <br>
+            <label style="color:white;"><h2>Enter Details Of Movie</h2></label><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-8" style="color:white;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label style="transform: translateY(12%);letter-spacing:.1em;">Movie Name:</label><br><br>
+                            <label style="transform: translateY(37%);letter-spacing:.1em;">Description:</label><br><br>
+                            <label style="transform: translateY(62%);letter-spacing:.1em;">Release Year:</label><br><br>
+                            <label style="transform: translateY(87%);letter-spacing:.1em;">Actors:</label><br><br>
+                            <label style="transform: translateY(160%);letter-spacing:.1em;">Genre:</label><br><br>
+                            <label style="transform: translateY(680%);letter-spacing:.1em;">Poster:</label><br><br>
+                            <label style="transform: translateY(705%);letter-spacing:.1em;">YouTube link:</label><br><br>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" placeholder="Enter Movie Name..." style="width: 400px;"><br><br>
+                            <input type="text" name="desc" placeholder="Enter Description..." style="width: 400px;"><br><br>
+                            <input type="number" name="year" placeholder="Enter Release Year..." style="width: 400px;"><br><br>
+                            <input type="text" name="actors" placeholder="Mention Relevant Actors..." style="width: 400px;"><br><br>
+                            <div class="col-md-3">
+                                <div class="card text-left" style="width: 20rem;height: 10rem;overflow:scroll;">
+                                    <div class="card-body">
+                                    {% for i in gennames %}
+                                        <input type="checkbox" name=genre value="{{i.name}}"> {{i.name}}<br>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="file" name="img" placeholder="Upload Movie Poster..." style="color:white;width: 400px;color:black;"><br><br>
+                            <input type="url" name="youtube_url" placeholder="Enter Youtube Trailer URL..." style="width: 400px;"><br><br><br>
+                            <input type="submit" value="Add Movie..." style="color:black;position:center;transform: translateX(-150%);">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

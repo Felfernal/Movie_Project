@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Page. Review and purchase your order.
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+<form method="post" style="position:center;">
+
+    {% csrf_token %}
+    <p style="color:white;">Are you sure you want to remove your review?</p>
+    <input type="submit" value="Yes">
+
+
+</form>
+
+
+
+{% endblock %}

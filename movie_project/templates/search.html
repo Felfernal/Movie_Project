@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+
+
+        A wide variety of products.
+{% endblock %}
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+    <div>
+        <p class="text-center my_search_text">Showing results for: <b>"{{query}}"</b></p>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                {% for i in movies %}
+                    {% if query|title in i.name or query|lower in i.name or query in i.name %}
+                        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-3">
+                            <div class="card text-center" style="width:13rem;">
+                                <a href="{% url 'movie_app:detail' i.id %}"><img class="card_img_top" src="{{i.img.url}}" alt="{{i.name}}" style="width:200px;"></a>
+                                <div class="card-body">
+                                    <h6 class="card-title">{{i.name}}</h6>
+                                    <p class="card-text">({{i.year}})</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% empty %}
+                    <div class="row_mx_auto">
+                        <p class="text-center my_search_text"> No results.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Page. Review and purchase your order.
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="transform: translateY(50%);">
+    <div class="row">
+        <div class="col-lg-12">
+            {% for msg1 in message %}
+            <h3 style="text-align:center;color:white;">{{msg1}}</h3>
+            {% endfor %}
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" style="text-align: center;">
+            <br>
+            <label><h2>Login</h2></label><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-8" style="color:white;">
+            <form action="{% url 'movie_app:login' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label style="transform: translate(120%,12%);letter-spacing:.1em;">Username:</label><br><br>
+                            <label style="transform: translate(131%,37%);letter-spacing:.1em;">Password:</label><br><br>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" name="Username" placeholder="Enter your Username" style="width: 300px;transform: translateX(-20%);"><br><br>
+                            <input type="password" name="pwd" placeholder="Enter your Password" style="width: 300px;transform: translateX(-20%)"><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <input type="submit" value="Login" style="margin-left: 21%">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            {% for msg in messages %}
+                <h5 style="margin-left: 10%;color:red;">{{msg}}</h5>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

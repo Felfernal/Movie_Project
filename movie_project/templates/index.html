@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Page. Review and purchase your order.
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="overflow:scroll;height:1300px;padding-bottom:30px;">
+    <div class="row">
+        {% for gen in gennames %}
+            <h1>{{gen.name}}</h1>
+            {% for i in movie_list %}
+                {% if gen.name in i.genre %}
+                    <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-3" style="padding-top:10px;padding-left:10px;padding-bottom:10px;padding-right:10px;">
+                        <div class="card text-center" style="width:13rem;">
+                            <a href="{% url 'movie_app:detail' i.id %}"><img class="card_img_top" src="{{i.img.url}}" alt="{{i.name}}" style="width:200px;"></a>
+                            <div class="card-body">
+                                <h6 class="card-title">{{i.name}}</h6>
+                                <p class="card-text">({{i.year}})</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

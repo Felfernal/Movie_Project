@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Page. Review and purchase your order.
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+<br><br><br>
+<h2 style="text-align:center;">Your Profile</h2>
+<br>
+{% if user.is_authenticated %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <table style="width:80%;position:center;margin-left: 25%" >
+                    <tr>
+                        <th><u>Username:</u></th>
+                        <td>{{user.username}}</td>
+                    </tr>
+                    <tr>
+                        <th><u>First Name:</u></th>
+                        <td>{{user.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <th><u>Last Name:</u></th>
+                        <td>{{user.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <th><u>E-mail:</u></th>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </table>
+                <a href="{% url 'movie_app:editprofile' %}" style="position:center;margin-left: 47%">Edit profile...</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

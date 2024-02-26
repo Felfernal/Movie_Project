@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6b31a6c5f2.js" crossorigin="anonymous"></script>
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body style="font-family: 'Oswald', serif;background-color:#34495E;color:white;background-image:url({% static 'img/bg.png' %});background-size: cover;">
+    <div class="my_header">
+        {% include 'navbar.html' %}
+        <div>
+            <img class="my_image my_image_padding" style="height:75%;" src="{% static 'img/banner.png' %}" alt="Our Banner">
+        </div>
+        <br><br>
+        <div class="main_content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

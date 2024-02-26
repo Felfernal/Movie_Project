@@ -1,0 +1,35 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block metadescription %}
+    Cart Page. Review and purchase your order.
+{% endblock %}
+{% block title %}
+    Login
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+            <br>
+            <label style="color:white;"><h1>Update Details</h1></label><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+            <form method="POST" enctype="multipart/form-data" style="color:white;">
+              {% csrf_token %}
+              {{form.as_p}}
+              <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
