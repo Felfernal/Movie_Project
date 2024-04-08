@@ -60,6 +60,10 @@
                     </div>
                 </div>
             </form>
+            <br>
+            {% for msg in messages %}
+                <h5 style="margin-left: 10%;color:red;">{{msg}}</h5>
+            {% endfor %}
         </div>
     </div>
 </div>

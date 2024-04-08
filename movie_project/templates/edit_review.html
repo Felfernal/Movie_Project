@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
 {% load static %}
 {% block metadescription %}
-    
+
 {% endblock %}
 {% block title %}
     Edit Review
@@ -16,14 +16,24 @@
             <label style="color:white;"><h1>Edit your review:</h1></label><br><br>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <form method="POST" enctype="multipart/form-data" style="color:white;">
               {% csrf_token %}
-              {{form.as_p}}
-              <input type="submit" value="Update">
+              <input type="hidden" name="movie_id" id="movie_id" value="{{movie.id}}">
+                <div class="form-group">
+                    <input type="text" name="review" placeholder="{{review.review}}" style="width: 100%;" >
+                </div>
+                <div class="form-group">
+                    Your Rating:<br>
+                    <input type="radio" id="star-1" name="rating" value="1" /><label for="star-1"></label>
+                    <input type="radio" id="star-2" name="rating" value="2" /><label for="star-2"></label>
+                    <input type="radio" id="star-3" name="rating" value="3" /><label for="star-3"></label>
+                    <input type="radio" id="star-4" name="rating" value="4" /><label for="star-4"></label>
+                    <input type="radio" id="star-5" name="rating" value="5" /><label for="star-5"></label>
+                </div>
+                <input type="submit" class="btn btn-success" value="Submit">
             </form>
         </div>
     </div>

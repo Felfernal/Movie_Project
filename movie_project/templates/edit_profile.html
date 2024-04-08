@@ -1,7 +1,7 @@
 {% extends 'home.html' %}
 {% load static %}
 {% block metadescription %}
-    
+
 {% endblock %}
 {% block title %}
     Edit Profile
@@ -22,9 +22,27 @@
         <div class="col-md-8">
             <form method="POST" enctype="multipart/form-data" style="color:white;">
               {% csrf_token %}
-              {{form.as_p}}
-              <input type="submit" value="Update">
+              <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label style="transform: translateY(12%);letter-spacing:.1em;">Username:</label><br><br>
+                            <label style="transform: translateY(37%);letter-spacing:.1em;">First Name:</label><br><br>
+                            <label style="transform: translateY(62%);letter-spacing:.1em;">Last Name:</label><br><br>
+                            <label style="transform: translateY(87%);letter-spacing:.1em;">E-mail:</label><br><br>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" name="Username" placeholder="Will use '{{user.username}}' if left blank..." style="width: 400px;"><br><br>
+                            <input type="text" name="first_name" placeholder="Enter First Name..." style="width: 400px;"><br><br>
+                            <input type="text" name="last_name" placeholder="Enter Last Name..." style="width: 400px;"><br><br>
+                            <input type="text" name="mail" placeholder="Will use '{{user.email}}' if left blank..." style="width: 400px;"><br><br>
+                            <input type="submit" value="Update Profile" style="color:black;position:center;transform: translateX(-150%);">
+                        </div>
+                    </div>
+                </div>
             </form>
+            {% for msg in messages %}
+            <h5 style="margin-left: 10%;color:red;">{{msg}}</h5>
+            {% endfor %}
         </div>
     </div>
 </div>

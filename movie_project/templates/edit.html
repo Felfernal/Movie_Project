@@ -1,10 +1,10 @@
 {% extends 'home.html' %}
 {% load static %}
 {% block metadescription %}
-    Cart Page. Review and purchase your order.
+
 {% endblock %}
 {% block title %}
-    Login
+    Edit
 {% endblock %}
 
 
@@ -22,9 +22,42 @@
         <div class="col-md-8">
             <form method="POST" enctype="multipart/form-data" style="color:white;">
               {% csrf_token %}
-              {{form.as_p}}
-              <input type="submit" value="Update">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label style="transform: translateY(12%);letter-spacing:.1em;">Movie Name:</label><br><br>
+                            <label style="transform: translateY(37%);letter-spacing:.1em;">Description:</label><br><br>
+                            <label style="transform: translateY(62%);letter-spacing:.1em;">Release Year:</label><br><br>
+                            <label style="transform: translateY(87%);letter-spacing:.1em;">Actors:</label><br><br>
+                            <label style="transform: translateY(160%);letter-spacing:.1em;">Genre:</label><br><br>
+                            <label style="transform: translateY(680%);letter-spacing:.1em;">Poster:</label><br><br>
+                            <label style="transform: translateY(705%);letter-spacing:.1em;">YouTube link:</label><br><br>
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" placeholder="{{movie.name}}" style="width: 400px;"><br><br>
+                            <input type="text" name="desc" placeholder="{{movie.desc}}" style="width: 400px;"><br><br>
+                            <input type="number" name="year" placeholder="{{movie.year}}" style="width: 400px;"><br><br>
+                            <input type="text" name="actors" placeholder="{{movie.actors}}" style="width: 400px;"><br><br>
+                            <div class="col-md-3">
+                                <div class="card text-left" style="width: 20rem;height: 10rem;overflow:scroll;">
+                                    <div class="card-body">
+                                    {% for i in gennames %}
+                                        <input type="checkbox" name=genre value="{{i.name}}"> {{i.name}}<br>
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="file" name="img" placeholder="Upload Movie Poster..." style="color:white;width: 400px;color:black;"><br><br>
+                            <input type="url" name="youtube_url" placeholder="{{movie.url}}" style="width: 400px;"><br><br><br>
+                            <input type="submit" value="Update" style="color:black;position:center;transform: translateX(-150%);">
+                        </div>
+                    </div>
+                </div>
             </form>
+            {% for msg in messages %}
+            <h5 style="margin-left: 10%;color:red;">{{msg}}</h5>
+            {% endfor %}
         </div>
     </div>
 </div>
